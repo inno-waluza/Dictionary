@@ -11,7 +11,8 @@ def get_meaning(word):
     return response
 
 word = get_word()
-print(get_meaning(word))
+print(get_meaning(word)[0][''])
+
 
 
   
