@@ -24,9 +24,11 @@ while True:
             definition_text = definition["definition"]
             definitions.append({"part_of_speech": part_of_speech, "definition_text": definition_text})
 
-    # Print the extracted data
-    print(f"Word: {word}")
-    print("Definitions:")
-    for definition in definitions:
-        print(f"{definition['part_of_speech']}: {definition['definition_text']}")
-        print("")
+# Print the extracted data
+print(f"Word: {word}")
+print("Definitions:")
+for definition in definitions:
+    print(f"{definition['part_of_speech']}: {definition['definition_text']}")
+
+
+  
