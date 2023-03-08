@@ -29,6 +29,3 @@ print(f"Word: {word}")
 print("Definitions:")
 for definition in definitions:
     print(f"{definition['part_of_speech']}: {definition['definition_text']}")
-
-
-  
