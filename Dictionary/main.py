@@ -9,13 +9,15 @@ class DictionaryGUI:
         master.title("Dictionary")
 
         # Create a label and a text input for the word to search
-        self.word_label = tk.Label(master, font = ("Arial", 16), text="Enter a word to search:")
+        self.welcome_label = tk.Label(master, font = ("Arial", 16), text = "English Dictionary")
+        self.welcome_label.pack()
+        self.word_label = tk.Label(master, font = ("Arial", 16), text = "Enter a word to search:")
         self.word_label.pack()
-        self.word_entry = tk.Entry(master)
+        self.word_entry = tk.Entry(master, width = 30,font = ("Arial", 16,))
         self.word_entry.pack()
 
         # Create a button to trigger the search
-        self.search_button = tk.Button(master, text="Search",font = ("Arial", 16), command=self.search_word)
+        self.search_button = tk.Button(master, text="Search",font = ("Arial", 16), command = self.search_word)
         self.search_button.pack()
 
         # Create a label to display the search result
@@ -60,4 +62,6 @@ if __name__ == '__main__':
     root = tk.Tk()
     dictionary_gui = DictionaryGUI(root)
     root.geometry("900x500+300+200")
+    window_icon = tk.PhotoImage(file = "Dictionary.png")
+    root.iconphoto(True,window_icon)
     root.mainloop()
