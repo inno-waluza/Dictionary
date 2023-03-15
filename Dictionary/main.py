@@ -4,7 +4,6 @@ import json
 
 class DictionaryGUI:
     def __init__(self, master):
-        # Create the GUI
         self.master = master
         master.title("Dictionary")
 
