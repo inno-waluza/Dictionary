@@ -71,7 +71,7 @@ class DictionaryGUI:
                 # Display an error message if the word is not found
                 self.result_label.config(text='Word not found')
         except:
-            mbox.showerror("Error", "An error occurred while retrieving the word meaning.")
+            mbox.showerror("Error", "Meaning of the word not found, You can try other sources.")
 
 
 if __name__ == '__main__':
