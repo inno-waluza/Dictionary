@@ -38,38 +38,41 @@ class DictionaryGUI:
             return ""
 
     def search_word(self):
-        # Retrieve the search term from the input box
-        search_term = self.word_entry.get()
+        try:
+            # Retrieve the search term from the input box
+            search_term = self.word_entry.get()
 
-        # Clear the previous search result
-        self.result_label.config(text='')
+            # Clear the previous search result
+            self.result_label.config(text='')
 
-        # Use the dictionary API to get the meaning of the word
-        json_data = self.get_meaning(search_term)
+            # Use the dictionary API to get the meaning of the word
+            json_data = self.get_meaning(search_term)
 
-        if json_data == "":
-            # An error occurred, do not continue
-            return
+            if json_data == "":
+                # An error occurred, do not continue
+                return
+            data = json.loads(json_data)
 
-        data = json.loads(json_data)
+            # Display the meaning of the word if it is found
+            if len(data) > 0:
+                word = data[0]["word"]
+                definitions = []
+                for meaning in data[0]["meanings"]:
+                    part_of_speech = meaning["partOfSpeech"]
+                    for definition in meaning["definitions"]:
+                        definition_text = definition["definition"]
+                        definitions.append({"part_of_speech": part_of_speech, "definition_text": definition_text})
+                        
+                        result_text = f"Word: {word}\nDefinitions:\n"
+                        for definition in definitions:
+                            result_text += f"{definition['part_of_speech']}: {definition['definition_text']}\n"
+                            self.result_label.config(text=result_text)
+            else:
+                # Display an error message if the word is not found
+                self.result_label.config(text='Word not found')
+        except:
+            mbox.showerror("Error", "An error occurred while retrieving the word meaning.")
 
-        # Display the meaning of the word if it is found
-        if len(data) > 0:
-            word = data[0]["word"]
-            definitions = []
-            for meaning in data[0]["meanings"]:
-                part_of_speech = meaning["partOfSpeech"]
-                for definition in meaning["definitions"]:
-                    definition_text = definition["definition"]
-                    definitions.append({"part_of_speech": part_of_speech, "definition_text": definition_text})
-
-            result_text = f"Word: {word}\nDefinitions:\n"
-            for definition in definitions:
-                result_text += f"{definition['part_of_speech']}: {definition['definition_text']}\n"
-            self.result_label.config(text=result_text)
-        else:
-            # Display an error message if the word is not found
-            self.result_label.config(text='Word not found')
 
 if __name__ == '__main__':
     root = tk.Tk()
