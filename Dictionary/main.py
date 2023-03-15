@@ -23,6 +23,9 @@ class DictionaryGUI:
         self.result_label = tk.Label(master, text="", font = ("Arial", 13))
         self.result_label.pack()
 
+        self.myname_label = tk.Label(master, text="by innowaluza", font=("Arial, 16"))
+        self.myname_label.pack()
+
     def get_meaning(self, word):
         data = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
         response = data.text
@@ -55,12 +58,14 @@ class DictionaryGUI:
             self.result_label.config(text=result_text)
         else:
             # Display an error message if the word is not found
-            self.result_label.config(text='Word not found')
+            self.result_label.config(text = 'Word not found')
 
 if __name__ == '__main__':
     root = tk.Tk()
     dictionary_gui = DictionaryGUI(root)
     root.geometry("900x500+300+200")
-    window_icon = tk.PhotoImage(file = "Dictionary.png")
-    root.iconphoto(True,window_icon)
+    window_icon = tk.PhotoImage(file="Dictionary.png")
+    window_icon = window_icon.subsample(16)
+
+    root.iconphoto(True, window_icon)
     root.mainloop()
