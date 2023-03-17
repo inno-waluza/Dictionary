@@ -11,7 +11,7 @@ class DictionaryGUI:
         # Create a label and a text input for the word to search
         self.welcome_label = tk.Label(master, font=("Arial", 16), text="English Dictionary")
         self.welcome_label.pack()
-        self.word_label = tk.Label(master, font=("Arial", 16), text="Enter a word to search:")
+        self.word_label = tk.Label(master, font=("Arial", 16), text="Enter a Word")
         self.word_label.pack()
         self.word_entry = tk.Entry(master, width=30, font=("Arial", 16,))
         self.word_entry.pack()
