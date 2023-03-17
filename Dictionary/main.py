@@ -80,6 +80,5 @@ if __name__ == '__main__':
     root.geometry("900x500+300+200")
     window_icon = tk.PhotoImage(file="Dictionary.png")
     window_icon = window_icon.subsample(16)
-
     root.iconphoto(True, window_icon)
     root.mainloop()
